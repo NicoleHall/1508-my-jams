@@ -1,8 +1,14 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update]
+  helper_method :most_recent_song
 
   def index
+    most_recent_song
     @songs = Song.where(title: @search_term)
+  end
+
+  def most_recent_song
+    session[:most_recent_song_id] = Song.last.id
   end
 
   def show
