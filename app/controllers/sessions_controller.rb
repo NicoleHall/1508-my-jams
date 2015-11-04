@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
-      #else
-      #redirect to login page, maybe flash message
+      flash.now[:error] = "Invalid Login"
+      render :new
     end
   end
 
