@@ -13,7 +13,7 @@ end
 
 class ActionDispatch::IntegrationTest
   def teardown
-    reset_session!
+    Capybara.reset_session!
   end
 
 
