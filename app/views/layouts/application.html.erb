@@ -1,3 +1,4 @@
+<!-- layout gets renered everywhere -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
 </head>
 <body>
   <% if current_user %>
-    Welcome,<%= @user.username %>
+    Welcome, <%= current_user.username %>
     <% end %>
 <%= yield %>
 
