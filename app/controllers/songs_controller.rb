@@ -3,15 +3,17 @@ class SongsController < ApplicationController
   helper_method :most_recent_song
 
   def index
-    most_recent_song
-    @songs = Song.where(title: @search_term)
+    @songs = Song.all
+    # most_recent_song
+    # @songs = Song.where(title: @search_term)
   end
 
-  def most_recent_song
-    session[:most_recent_song_id] = Song.last.id
-  end
+  # def most_recent_song
+  #   session[:most_recent_song_id] = Song.last.id
+  # end
 
   def show
+    @song = Song.find(params[:id])
   end
 
   def new
@@ -23,7 +25,7 @@ class SongsController < ApplicationController
     # redirect_to songs_path
 
     @song = Song.new(song_params)
-    if @song.save
+    if @song.save  #it looking for a truthy value
       flash[:notice] = "Song successfully saved."
       redirect_to songs_path
     else

@@ -1,6 +1,2 @@
 <h1><%= @song.title %></h1>
 <p><%= @song.artist %></p>
-<p>
- <strong>Newest song:</strong>
- <%= Song.find_by(most_recent_song).title %>
-</p>
