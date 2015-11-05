@@ -9,10 +9,7 @@
 </head>
 <body>
   <% if current_user %>
-    Welcome, <%= current_user.username %>
-    <%= link_to "Logout", logout_path, method: :delete%>
-    <% end %>
-
+    <%= link_to "Logout", logout_path, method: :delete%><% end %>
     <%= flash.each do |name, msg| %>
     <%content_tag :div, msg, id: "flash_#{name}"%>
     <% end %>
