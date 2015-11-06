@@ -23,6 +23,8 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     assert page.has_content?("Welcome, #{user.username}")
     assert page.has_content?("#{user.username}'s Jams")
     tune = Song.create(title: "Hard Days Night", artist: "The Beatles")
-    assert page.has_content?("#{user.songs}")
+    user.songs << tune
+    visit "/users/#{user.id}"
+    assert page.has_content?("#{Song.find(user.id).title}")
   end
 end
